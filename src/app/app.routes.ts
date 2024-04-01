@@ -4,6 +4,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ComponentInputExampleComponent } from './components/component-input-example/component-input-example.component';
 import { ComponentForDirectiveExampleComponent } from './components/component-for-directive-example/component-for-directive-example.component';
 
+
 export const routes: Routes = [
     {path: 'for-directive-example', component: ComponentForDirectiveExampleComponent},
     {path: 'component-input-example', component: ComponentInputExampleComponent},
