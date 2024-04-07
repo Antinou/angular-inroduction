@@ -7,43 +7,47 @@ import { sortBy } from 'lodash-es';
   standalone: true,
   imports: [],
   templateUrl: './simple-datatable.component.html',
-  styleUrl: './simple-datatable.component.css'
+  styleUrl: './simple-datatable.component.css',
 })
 export class SimpleDatatableComponent {
-@Input () data: EPerson[];
-@Output() personClicked = new EventEmitter<EPerson>();
-sortOrder = {
-  givenName: 'none',
-  surName: 'none',
-  age:'none',
-  email: 'none',
-  education: 'none'
-}
+  @Input() data: EPerson[];
+  @Output() personClicked = new EventEmitter<EPerson>();
 
-sortData(sortKey: string) {
-if (this.sortOrder[sortKey] === 'asc') {
-  this.sortOrder[sortKey] = 'desc';
-  this.data = sortBy(this.data, sortKey).reverse();
-} else {
-  this.sortOrder[sortKey] = 'asc ';
-  this.data = sortBy(this.data, sortKey);
-}
-for (let key in this.sortOrder) {
-  if (key !== sortKey) {
-    this.sortOrder[key] = 'none';
+  sortOrder = {
+    givenName: 'none',
+    surName: 'none',
+    age: 'none',
+    email: 'none',
+    education: 'none',
+  };
+
+  sortData(sortKey: string) {
+    if (this.sortOrder[sortKey] === 'asc') {
+      this.sortOrder[sortKey] = 'desc';
+      this.data = sortBy(this.data, sortKey).reverse();
+    } else {
+      this.sortOrder[sortKey] = 'asc';
+      this.data = sortBy(this.data, sortKey);
+    }
+
+    for (let key in this.sortOrder) {
+      if (key !== sortKey) {
+        this.sortOrder[key] = 'none';
+      }
+    }
   }
-}
-}
-sortSign(sortKey: string) {
-  if (this.sortOrder[sortKey] === 'asc') {
-    return '↑';
-  } else if (this.sortOrder[sortKey] === 'desc') {
-    return '↓';
-  } else {
-    return '';
+
+  sortSign(sortKey: string) {
+    if (this.sortOrder[sortKey] === 'asc') {
+      return '↑';
+    } else if (this.sortOrder[sortKey] === 'desc') {
+      return '↓';
+    } else {
+      return '';
+    }
   }
-}
-onPersonClicked(person: EPerson) {
-  this.personClicked.emit(person);
-}
+
+  onPersonClicked(person: EPerson) {
+    this.personClicked.emit(person);
+  }
 }
