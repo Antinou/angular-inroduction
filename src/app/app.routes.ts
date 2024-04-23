@@ -12,6 +12,7 @@ import { RestrictedContentExampleComponent } from './components/restricted-conte
 import { authGuard } from './shared/guards/auth.guard';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import { ComponentForDirectiveExampleComponent } from './components/component-for-directive-example/component-for-directive-example.component';
+import { FunForNerdsComponent } from './components/fun-for-nerds/fun-for-nerds/fun-for-nerds.component';
 
 
 export const routes: Routes = [
@@ -55,4 +56,8 @@ export const routes: Routes = [
   },
   { path: 'login', component: UserLoginComponent },
   { path: '', component: WelcomeComponent },
+  {
+    path: 'fun-for-nerds',
+    component: FunForNerdsComponent,
+  },
 ];
